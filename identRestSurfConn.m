@@ -7,7 +7,7 @@
 
 function identRestSurfConn(seedPath)
 
-bidsDir = fpp.bids.checkBidsDir(seedPath);
+bidsDir = fpp.bids.checkBidsDir(seedPath); % read the base path and store as a string
 spaceStr = '_space-individual_res-2_den-32k';
 nRuns = 6;
 inputDesc = 'GSRSm2';
@@ -18,7 +18,10 @@ seedDen = fpp.bids.checkNameValue(seedPath,'den');
 if ~strcmp(seedDen,'32k'), error('Seed must be defined in 32k fsLR space.'); end
 
 % Define paths
+% read subject directory based on the seed path
 subjDir = [bidsDir '/sub-' subjID];
+
+% read two function Dirs inside the subject Dir
 funcDir = [subjDir '/func'];
 analysisDir = [subjDir '/analysis'];
 
@@ -27,7 +30,7 @@ seedMat = fpp.util.readDataMatrix(seedPath);
 
 % Loop across runs, compute correlations
 for r=1:nRuns
-    % Load data
+    % Load data (this will be the full path tp the resting data.nii)
     restPath = [funcDir '/sub-' subjID '_task-rest_run-' fpp.util.numPad(r,2)...
         spaceStr '_desc-preproc' inputDesc '_bold.dtseries.nii'];
     [restMat,hdr] = fpp.util.readDataMatrix(restPath);
