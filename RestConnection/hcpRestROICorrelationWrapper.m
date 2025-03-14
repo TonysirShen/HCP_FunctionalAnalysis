@@ -33,4 +33,4 @@ for s = 1 : length(Du15net)
 end
 end
 outputDesc = [suffix Contrasts{1} 'DU15NET' group];
-hcpIdentRestROICorrelation(roiDescs,outputDesc);
+hcpRestROICorrelation(roiDescs,outputDesc);
