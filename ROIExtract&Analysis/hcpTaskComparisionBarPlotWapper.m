@@ -11,7 +11,7 @@ for i = 1:numel(contrast_names)
     for j = 1:numel(searchNames)
         searchName = searchNames{j};
         roiDataPath = [roiDataFolder '/space-fsLR_res-2_den-32k_desc-handDrawn' searchName 'ThrP6workingmemory' contrast 'VsAllOthersTop5PctN415Sm4Discovery_roiData.mat'];
-        HCPSm4WmTaskComparisionBarGraph(roiDataPath,roiDataFolder)
+        hcpTaskComparisionBarGraph(roiDataPath,roiDataFolder)
         title([searchName ' ' contrast ' ']);
         outputFigurePath = [roiDataFolder '/' fpp.bids.checkNameValue(roiDataPath,'desc') '.png']
         saveas(gcf,outputFigurePath);
