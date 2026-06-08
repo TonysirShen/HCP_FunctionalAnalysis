@@ -44,6 +44,31 @@ for s=1:length(searchNames)
     end
 end
 
+%% ATL additional regions -AIT
+searchpaths = {
+'/mnt/sml_share/searchspaces/space-fsLR_den-32k_desc-aparcLAITCGroup_mask.dscalar.nii',
+'/mnt/sml_share/searchspaces/space-fsLR_den-32k_desc-aparcRAITCGroup_mask.dscalar.nii'
+};
+contrasts = {'FacesVsAllOthers','ToolsVsAllOthers','PlacesvsAllOthers','BodyVsAllOthers'}
+subject_info = '/mnt/sml_share/HCP/derivatives/cshen2/BalancedReplicationIDs.xlsx'
+for s = 1:length(searchpaths)
+    for c = 1 :length(contrasts)
+        hcpSm4ROIExtract_Analysis( ...
+        'workingmemory', ...
+        contrasts{c}, ...
+        '', ...
+         1, ...
+        'allSub', subject_info, ...
+        'searchPath', searchpaths{s});
+    end
+end
+%%
+% /mnt/sml_share/searchspaces/space-fsLR_den-32k_desc-aparcLASTCGroup_mask.dscalar.nii
+% /mnt/sml_share/searchspaces/space-fsLR_den-32k_desc-aparcrASTCGroup_mask.dscalar.nii
+% /mnt/sml_share/searchspaces/space-fsLR_den-32k_desc-mtl200LPRC_mask.dscalar.nii
+% /mnt/sml_share/searchspaces/space-fsLR_den-32k_desc-mtl200RPRC_mask.dscalar.nii
+% /mnt/sml_share/searchspaces/space-fsLR_den-32k_desc-mtl200LTP_mask.dscalar.nii
+% /mnt/sml_share/searchspaces/space-fsLR_den-32k_desc-mtl200RTP_mask.dscalar.nii
 % %% DMN area - ASTS 
 % searchNames = {'mmpApexRASTS'};%,'mmpApexLMPC','mmpApexLMPFC','mmpApexLSFG',...
 %      %'mmpApexLTH','mmpApexLTPJ'}
