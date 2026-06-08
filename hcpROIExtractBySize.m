@@ -67,7 +67,7 @@ if found
 end
 [found,idx]  = ismember('outputOverwrite', varargin);
 if found
-    outputDir = varargin{idx + 1};
+    outputOverwrite = varargin{idx + 1};
 end
 % Define output suffices based on variable arguments
 numSuffix = 'BySize';
